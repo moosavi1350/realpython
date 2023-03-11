@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+    <style>pre{text-align: left;}</style>
+    {{ res|safe }}
+    <hr>
+    <textarea name="" id="" cols="100" rows="20">
+        {{ res|safe }}
+    </textarea>
+{% endblock %}

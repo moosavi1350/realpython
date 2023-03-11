@@ -1,0 +1,380 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+<script src="/static/my.js"></script>
+
+<div class="row">
+
+    <div class="col-md-12 col-lg-8 myGrid">
+        <div class="row">
+            <div class="col-12">
+                {% if request.user.is_authenticated %}
+                <a href="{%url 'accounts:user_profile' request.user.id %}">{{ request.user.first_name }} {{ request.user.last_name }}</a>
+                {% endif %}
+                <h1 style="cursor:pointer" onclick="poim(this)">ز گهواره تا گور دانش بجو</h1>
+
+            </div>
+
+            <div class="col-12 mb-3">
+                {% if oneT %}
+                <div class="card border-0">
+                    <a href="{{ oneT.get_absolute_url }}">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain;"
+                                 src="{{ oneT.imgurl }}"
+                                 alt="{{ oneT.title }}" width="1920" height="1080"
+                                 sizes="50vw">
+                        </div>
+                    </a>
+                    <div class="card-body m-0 p-0 pt-3" style="background-color: black; min-height: 215px">
+                        <a href="{{ oneT.get_absolute_url }}">
+                            <h2 class="card-title h2 pr-3 pt-0 mt-1">{{ oneT.title }}</h2>
+                        </a>
+                        <p class="p-3">{{ oneT.body|striptags |truncatewords:28 }}</p>
+                        <p class="card-text" style="position: absolute;bottom: 5px;">
+                            <small class="text-muted">
+                                <span class="mr-2">{{ oneT.created |timesince }}</span>
+                                <span class="ml-2 fa fa-tags" aria-hidden="true"></span>
+                                <a href="/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+                                <a href="/tutorials/python/" class="badge badge-light text-muted">python</a>
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-4 myGrid">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card mb-3 bg-secondary" style="color: black">
+                    <form class="card-body" action="/optins/process/" method="post">
+                        <div class="form-group">
+                            <p class="h5 text-muted text-center">— سری ایمیل های رایگان —</p>
+                            <p class="h4 text-center">🐍 ترفند های پایتون 💌</p>
+                            <p><img class="img-fluid rounded"
+                                    src="static/media/pytrick-dict-merge.webp"
+                                    width="738" height="490" alt="Python Tricks Dictionary Merge"></p>
+                        </div>
+                        <div class="form-group">
+                            {% csrf_token %}
+                            <input type="hidden" name="slug" value="static-python-tricks-sidebar">
+                            <input type="email" class="form-control form-control-md" name="email"
+                                   placeholder="Email&hellip;" required dir="ltr">
+                        </div>
+                        <button type="submit" name="submit" class="btn btn-primary btn-md btn-block" data-toggle="modal" data-target="#modal-newsletter">
+                             دریافت ترفندهای پایتون
+                        </button>
+                        <p class="mb-0 mt-2 text-muted">🔒 بدون هرزنامه</p>
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="col-12">
+
+
+                <div class="sidebar-module sidebar-module-inset border">
+                    <p class="h4"><a class="link-unstyled" href="/tutorials/all/">All Tutorial Topics</a></p>
+
+                    <a href="/tutorials/advanced/" class="badge badge-light text-muted">advanced</a>
+
+                    <a href="/tutorials/api/" class="badge badge-light text-muted">api</a>
+
+                    <a href="/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+
+                    <a href="/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+
+                    <a href="/tutorials/community/" class="badge badge-light text-muted">community</a>
+
+                    <a href="/tutorials/databases/" class="badge badge-light text-muted">databases</a>
+
+                    <a href="/tutorials/data-science/" class="badge badge-light text-muted">data-science</a>
+
+                    <a href="/tutorials/devops/" class="badge badge-light text-muted">devops</a>
+
+                    <a href="/tutorials/django/" class="badge badge-light text-muted">django</a>
+
+                    <a href="/tutorials/docker/" class="badge badge-light text-muted">docker</a>
+
+                    <a href="/tutorials/flask/" class="badge badge-light text-muted">flask</a>
+
+                    <a href="/tutorials/front-end/" class="badge badge-light text-muted">front-end</a>
+
+                    <a href="/tutorials/gamedev/" class="badge badge-light text-muted">gamedev</a>
+
+                    <a href="/tutorials/gui/" class="badge badge-light text-muted">gui</a>
+
+                    <a href="/tutorials/intermediate/" class="badge badge-light text-muted">intermediate</a>
+
+                    <a href="/tutorials/machine-learning/" class="badge badge-light text-muted">machine-learning</a>
+
+                    <a href="/tutorials/projects/" class="badge badge-light text-muted">projects</a>
+
+                    <a href="/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+                    <a href="/tutorials/testing/" class="badge badge-light text-muted">testing</a>
+
+                    <a href="/tutorials/tools/" class="badge badge-light text-muted">tools</a>
+
+                    <a href="/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a>
+
+                    <a href="/tutorials/web-scraping/" class="badge badge-light text-muted">web-scraping</a>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 mt-4">
+        <div class="d-flex justify-content-between align-items-center w-100 mt-0 mb-2">
+            <h2 class="my-0">ما را کاوش کنید</h2>
+
+        </div>
+
+
+        <div class="card-deck mb-3 pl-md-3 pl-sm-3">
+
+            <div class="card bg-dark border-0 ml-0 mr-md-3">
+                <div class="card-body text-center highlight-hover-dark rounded">
+                    <a class="btn stretched-link" href="/learning-paths/" style="color: #ffc873; line-height: 110%;"><i
+                            class="fa fa-fw mr-1 fa-map-o"></i>Learning Paths<br><small class="text-secondary">Guided
+                        study plans for accelerated learning</small></a>
+                </div>
+            </div>
+
+
+            <div class="card bg-dark border-0 ml-0 mr-md-3">
+                <div class="card-body text-center highlight-hover-dark rounded">
+                    <a class="btn stretched-link" href="/search?kind=article&kind=course&order=newest"
+                       style="color: #ff7e73; line-height: 110%;"><i class="fa fa-fw mr-1 fa-graduation-cap"></i>Python
+                        Tutorials<br><small class="text-secondary">In-depth articles and step-by-step video
+                            courses</small></a>
+                </div>
+            </div>
+
+
+            <div class="w-100 mb-3 d-none d-sm-block d-lg-none"></div>
+
+            <div class="card bg-dark border-0 ml-0 mr-md-3">
+                <div class="card-body text-center highlight-hover-dark rounded">
+                    <a class="btn stretched-link" href="/quizzes/" style="color: #abe0e5; line-height: 110%;">
+                        <i class="fa fa-fw mr-1 fa-trophy"></i> اعداد اول <br><br>
+                        <small class="text-secondary">تولید اعداد اول</small></a>
+                </div>
+            </div>
+
+
+            <div class="card bg-dark border-0 ml-0 mr-md-3">
+                <div class="card-body text-center highlight-hover-dark rounded">
+                    <a class="btn stretched-link" href="/tutorials/all/" style="color: #ccc; line-height: 110%;"><i
+                            class="fa fa-fw mr-1 fa-tags"></i>Browse Topics<br><small class="text-secondary">Focus on a
+                        specific area or skill level</small></a>
+                </div>
+            </div>
+
+
+            <div class="w-100 mb-3 d-none d-sm-block d-lg-none"></div>
+            <div class="w-100 mb-3 d-none d-lg-block"></div>
+
+            <div class="card bg-dark border-0 ml-0 mr-md-3">
+                <div class="card-body text-center highlight-hover-dark rounded">
+                    <a class="btn stretched-link" href="/community/" style="color: #e5c6ab; line-height: 110%;"><i
+                            class="fa fa-fw mr-1 fa-slack"></i>Community Chat<br><small class="text-secondary">Learn
+                        with other Pythonistas</small></a>
+                </div>
+            </div>
+
+
+            <div class="card bg-dark border-0 ml-0 mr-md-3">
+                <div class="card-body text-center highlight-hover-dark rounded">
+                    <a class="btn stretched-link" href="/office-hours/" style="color: #e5c6ab; line-height: 110%;"><i
+                            class="fa fa-fw mr-1 fa-users"></i>Office Hours<br><small class="text-secondary">Live Q&A
+                        calls with an expert from the Real Python Team</small></a>
+                </div>
+            </div>
+
+
+            <div class="w-100 mb-3 d-none d-sm-block d-lg-none"></div>
+
+            <div class="card bg-dark border-0 ml-0 mr-md-3">
+                <div class="card-body text-center highlight-hover-dark rounded">
+                    <a class="btn stretched-link" href="/podcasts/rpp/" style="color: #b8abe5; line-height: 110%;"><i
+                            class="fa fa-fw mr-1 fa-podcast"></i>Podcast<br><small class="text-secondary">Hear what’s
+                        new in the world of Python programming</small></a>
+                </div>
+            </div>
+
+
+            <div class="card bg-dark border-0 ml-0 mr-md-3">
+                <div class="card-body text-center highlight-hover-dark rounded">
+                    <a class="btn stretched-link" href="/products/books/" style="color: #abe5b1; line-height: 110%;"><i
+                            class="fa fa-fw mr-1 fa-book"></i>Books<br><small class="text-secondary">Round out your
+                        knowledge and learn offline</small></a>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="d-flex mb-5" dir="ltr">
+            <form class="form-inline col p-0" action="/search" method="GET" id="home-search-form1">
+                <a class="js-search-form-submit position-absolute" href="/search" title="Search"><i
+                        class="fa fa-search fa-fw text-muted pl-2" aria-hidden="true"></i></a>
+                <input class="form-control form-control-lg w-100" style="padding-left: 2rem;" maxlength=50 type="search"
+                       placeholder="&hellip;" aria-label="Search"
+                       name="q" autocomplete="off">
+                <input type="hidden" name="_from" value="home">
+            </form>
+            <button class="ml-3 btn btn-primary col-3 d-none d-lg-block" style="max-width: 250px;" type="submit"
+                    form="home-search-form1">جستجو
+            </button>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center w-100 mt-0 mb-2">
+            <h2 class="my-0"><a href="/search?q=java" class="text-body">آخرین انتشارات</a></h2>
+
+            <a href="/search?q=" class="btn btn-secondary btn-sm">همه را نشون بده</a>
+
+        </div>
+
+    </div>
+
+    {% for tut in allT %}
+        <div class="col-12 col-md-6 col-lg-4 mb-5">
+            <div class="card border-0" style="border-radius: 16px; background-color: black">
+                <a href="{{ tut.get_absolute_url }}">
+                    <div class="embed-responsive embed-responsive-16by9">
+
+                        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded"
+                             style="object-fit: contain;" alt="{{ tut.title }}"
+                             src="{{ tut.imgurl }}"
+                             width="1920" height="1080"
+                             sizes="25vw">
+
+
+                    </div>
+                </a>
+                <div class="card-body m-0 p-0 mt-2" style="background-color: black; min-height: 115px">
+                    <a class=" " href="{{ tut.get_absolute_url }}">
+                        <h2 class="card-title h4 my-0 py-2">{{ tut.title }}</h2>
+                    </a>
+                    <p class="card-text" style="position: absolute;bottom: 5px;">
+                        <small class="text-muted">
+
+                            <span class="mr-2">{{ tut.created|date:"d m Y" }}</span>
+
+                            <span class="fa fa-tags" aria-hidden="true"></span>
+
+                            <a href="/tutorials/python/" class="badge badge-light text-muted">python</a>
+
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+    <div class="col-12">
+        <div class="col-12 rounded p-0 w-100 mt-2 mb-4" style="overflow:hidden;">
+            <div style="display:block;position:relative;">
+                <div style="display:block;width:100%;padding-top:12.5%;"></div>
+                <div class="rpad rounded border" data-unit="8x1"
+                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            <a class="small text-muted" href="/account/join/" rel="nofollow">
+                <i class="fa fa-info-circle mr-1" aria-hidden="true"></i>حذف تبلیغات
+            </a>
+        </div>
+    </div>
+
+
+    <div class="w-100 text-center" id="frontpageLoadMore">
+        <button class="btn btn-secondary btn-lg px-5 mb-5" hx-get="/api/v1/frontpage_tutorials/1669644000/?v2"
+                hx-trigger="click" hx-target="#frontpageLoadMore" hx-swap="outerHTML" hx-ext="loading-states"
+                data-loading-disable><i class="htmx-indicator fa fa-circle-o-notch fa-spin mx-1"></i>مطالب بیشتر
+        </button>
+    </div>
+
+
+    <div class="col-12 col-lg-9 mx-auto my-0">
+        <div class="d-flex mb-5">
+            <button class="ml-3 btn btn-primary col-3 d-none d-lg-block" style="max-width: 250px;" type="submit"
+                    form="home-search-form2">جستجو
+            </button>
+            <form class="form-inline col p-0" action="/search" method="GET" id="home-search-form2">
+                <a class="js-search-form-submit position-absolute" href="/search" title="Search">
+                    <i class="fa fa-search fa-fw text-muted pl-2" aria-hidden="true"></i>
+                </a>
+                <input class="form-control form-control-lg w-100" maxlength=50 type="search"
+                       placeholder="جستجوی آموزشها , دوره ها , کوییزها &hellip;" aria-label="Search"
+                       name="q" autocomplete="off">
+                <input type="hidden" name="_from" value="home">
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+<div class="modal fade" id="modal-newsletter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content" style="color: black">
+
+            <div class="modal-header bg-light pt-3 pb-2">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="progress" style="height: .5rem;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated w-75"
+                                     role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <p class="text-muted text-center mb-0 mt-2"> ...اگه ایمیلا درست وارد کرده باشی</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body m-4">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-lg-4 mb-4">
+
+                            <img class="img-fluid rounded"
+                                 src="https://files.realpython.com/media/Real_Python_Newsletter_square.1e3e64f99300.jpg"
+                                 width="1000" height="1000" sizes="50vw" alt="The Real Python Newsletter">
+
+                        </div>
+                        <div class="col">
+                            <p class="text-center h3 mb-4">
+                                ... چند لحضه صبر کنید
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

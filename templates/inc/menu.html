@@ -1,0 +1,53 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown"
+       aria-haspopup="true" aria-expanded="false" style="color:black">
+        بیشتر
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+        <a class="dropdown-item" href="/accounts/profile/1350/">پروفایل</a>
+        <a class="dropdown-item" href="/newsletter/">Python Newsletter</a>
+        <a class="dropdown-item" href="https://solarsystem.nasa.gov/solar-system/our-solar-system/overview/" target="_blank">منظومه شمسی</a>
+        <a class="dropdown-item" href="{% url 'maps' %}">☺ نقشه</a>
+        <a class="dropdown-item" href="https://en.wikipedia.org/wiki/International_Space_Station" target="_top">ایستگاه فضایی بین
+            المللی</a>
+
+    </div>
+</li>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLibrary" role="button" data-toggle="dropdown"
+       aria-haspopup="true" aria-expanded="false" style="color:black">
+        <span class="fa fa-graduation-cap" aria-hidden="true"></span> آموزش پایتون
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownLibrary">
+        <a class="dropdown-item" href="/search?kind=article&q=پاسخ&order=newest"
+           style="color: #ff7e73; line-height: 110%;"><i class="fa fa-fw mr-1 fa-graduation-cap" aria-hidden="true"></i>
+            Python Tutorials →<br><small class="text-secondary">In-depth articles and video courses</small></a>
+
+        <a class="dropdown-item" href="/learning-paths/" style="color: #ffc873; line-height: 110%;"><i
+                class="fa fa-fw mr-1 fa-map-o" aria-hidden="true"></i> Learning Paths →<br><small
+                class="text-secondary">Guided study plans for accelerated learning</small></a>
+        <a class="dropdown-item" href="{% url 'quizzes' %}" style="color: #abe0e5; line-height: 110%;"><i
+                class="fa fa-fw mr-1 fa-trophy" aria-hidden="true"></i> اعداد اول →<br>
+            <small class="text-secondary">تولید اعداد اول</small></a>
+        <a class="dropdown-item" href="/tutorials/all/" style="color: #ccc; line-height: 110%;"><i
+                class="fa fa-fw mr-1 fa-tags" aria-hidden="true"></i> Browse Topics →<br><small class="text-secondary">Focus
+            on a specific area or skill level</small></a>
+        <a class="dropdown-item" href="/community/" style="color: #e5c6ab; line-height: 110%;"><i
+                class="fa fa-fw mr-1 fa-slack" aria-hidden="true"></i> Community Chat →<br><small
+                class="text-secondary">Learn with other Pythonistas</small></a>
+        <a class="dropdown-item" href="/office-hours/" style="color: #e5c6ab; line-height: 110%;"><i
+                class="fa fa-fw mr-1 fa-users" aria-hidden="true"></i> Office Hours →<br><small class="text-secondary">Live
+            Q&A calls with Python experts</small></a>
+        <a class="dropdown-item" href="/podcasts/rpp/" style="color: #b8abe5; line-height: 110%;"><i
+                class="fa fa-fw mr-1 fa-podcast" aria-hidden="true"></i> Podcast →<br><small class="text-secondary">Hear
+            what’s new in the world of Python</small></a>
+        <a class="dropdown-item pb-3" href="/products/books/" style="color: #abe5b1; line-height: 110%;"><i
+                class="fa fa-fw mr-1 fa-book" aria-hidden="true"></i> Books →<br><small class="text-secondary">Round out
+            your knowledge and learn offline</small></a>
+
+        <a class="dropdown-item border-top text-warning" href="{% url 'feedback' %}"><i
+                class="fa fa-fw fa-star text-warning" aria-hidden="true"></i> نظر سنجی →</a>
+
+    </div>
+</li>

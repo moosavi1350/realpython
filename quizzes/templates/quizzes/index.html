@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+
+  <div class="text-center fa-2x_ ">
+    <p class="btn btn-primary px-5" onclick="aval();"> اعداد اول </p>
+  </div>
+
+  <div id="r" style="font-size:62px;" class="text-left" dir="ltr"></div>
+
+  <script>
+    n = 2
+    function aval() {
+      //alert(88)
+      document.getElementById('r').append(n + ' - ')
+      n++
+      while(!check(n)){n++}
+      function check(x) {
+          for(i=2; i<x; i++){
+            if(x % i == 0) return false
+          }
+          return true
+      }
+    }
+  </script>
+
+{% endblock %}

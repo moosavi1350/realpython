@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+<div class="login mb-4 mx-auto col-md-5">
+    <form action="" method="post" class="border rounded p-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p class="small mt-n2 text-right"><a href="{% url 'accounts:reset_password' %}">فراموشی رمز عبور ؟</a></p>
+        <input type="submit" value="ورود" class="btn btn-success btn-lg px-4 mt-2 w-100">
+    </form>
+    <div class="d-flex text-muted small w-100 mx-auto mt-4">
+        <span class="flex-fill border-top" style="margin-top:1.1rem;"></span>
+        <p class="my-1 px-2">ثبت نام</p>
+        <span class="flex-fill border-top" style="margin-top:1.1rem;"></span>
+    </div>
+    <a href="{% url 'accounts:user_register' %}" class="btn btn-secondary border w-100">ایجاد حساب کاربری جدید</a>
+</div>
+
+{% endblock %}

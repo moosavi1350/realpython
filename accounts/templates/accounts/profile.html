@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+    <h6 class="text-center">{{ request.user.first_name }} {{ request.user.last_name }}</h6>
+    <div dir="ltr">id: {{ request.user.id }}   username: {{ request.user }}</div>
+    <form action="" method="post" class="border rounded p-3 mb-4 col-md-12">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="ذخیره" class="btn btn-success col-md-2">
+    </form>
+zz {{mys.bgc}}
+    <div class="card bg-dark">
+        {% for t in tuts %}
+            <a href="{{ t.get_absolute_url }}" class="card-body">{{ t.title }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}

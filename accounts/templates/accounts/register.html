@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+<div class="signup mx-auto col-md-5">
+    <form action="" method="post" class="border rounded p-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="ایجاد حساب کاربری" class="btn btn-success btn-lg px-4 mt-2 w-100">
+    </form>
+    <div class="text-right text-muted small">
+        <p> حساب کاربری دارم <a href="{% url 'accounts:user_login' %}"> ورود </a></p>
+    </div>
+</div>
+
+{% endblock %}

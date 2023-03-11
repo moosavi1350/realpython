@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+{% for t in tuts %}
+<div class="card bg-dark text-info mb-3">{{ forloop.counter }}
+    <div class="row g-0">
+        <div class="col-md-4">
+            <a href="{{ t.get_absolute_url }}">
+                <img src="{{ t.imgurl }}" class="img-fluid rounded-start" alt="...">
+            </a>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ t.title }}</h5>
+                <p class="card-text text-muted">{{ t.body|striptags |truncatewords:25 }}</p>
+                <div class="row">
+                    <div class="col-md-10"><small class="text-muted">{{ t.created |timesince }}</small></div>
+                    <div class="col-md-2"><small class="text-muted">امتیاز {{ t.score }}</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

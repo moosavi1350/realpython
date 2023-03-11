@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+
+
+<div class="container main-content">
+
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-10 col-lg-8 article">
+
+            <div class="article-body page-body">
+                <h1 class="text-center my-5" id="learn-python-programmingby-example">یادگیری برنامه نویسی پایتون<br><br>
+                    همراه با مثال<a class="headerlink" href="#learn-python-programmingby-example" title="Permanent link"></a>
+                </h1>
+                <div class="alert alert-primary" role="alert">
+                    <h2 class="mt-0" id="how-can-we-help-you">چگونه ما میتوانیم به شما کمک کنیم؟
+                        <a class="headerlink" href="#how-can-we-help-you" title="Permanent link"></a>
+                    </h2>
+                    <p>ما در حال به روز رسانی این صفحه برای مفیدتر کردن آن هستیم، اگر لحظه ای فرصت دارید تا نظرات خود را در مورد چگونگی بهبود این صفحه به اشتراک بگذارید، لطفاً اینجا را کلیک کنید:</p>
+                    <div class="text-center"><a
+                            href="{% url 'feedback' %}"
+                            class="btn btn-primary px-5">هر نظر یا پیشنهادی داری بگو</a></div>
+                </div>
+                <figure class=""><img loading="lazy" class="img-fluid mx-auto d-block rounded mb-5 mt-5"
+                                      src="https://files.realpython.com/media/real-python-video-courses-title-wide.daf71ae6460c.png"
+                                      width="1920" height="1080"
+                                      srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/real-python-video-courses-title-wide.daf71ae6460c.png&amp;w=480&amp;sig=45f079962f5091a54251eb9041c0666c6ca53e2f 480w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/real-python-video-courses-title-wide.daf71ae6460c.png&amp;w=960&amp;sig=6b9b30d0dae74f46fa47123a61e4f51adde721f0 960w, https://files.realpython.com/media/real-python-video-courses-title-wide.daf71ae6460c.png 1920w"
+                                      sizes="75vw" alt="Real Python Video Courses" data-asset="1217"/></figure>
+
+                <p class="mb-5"> در <strong>این سایت</strong> می توانید همه چیز پایتون را از پایه یاد بگیرید.</p>
+                <div class="card mt-4 mb-4 bg-secondary" style="color: black">
+                    <p class="card-header h3 text-center bg-light">🐍 ترفندهای پایتون 💌</p>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-7">
+                                    <p>یک ترفند کوتاه و شیرین پایتون را هر چند روز یک بار در صندوق پستی خود دریافت کنید.<br><br>هر زمان خواستید لغو اشتراک کنید.</p>
+                                </div>
+                                <div class="col-xs-12 col-sm-5">
+                                    <img class="img-fluid rounded mb-3"
+                                         src="https://files.realpython.com/media/pytrick-dict-merge.4201a0125a5e.png"
+                                         alt="Python Tricks Dictionary Merge">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <form class="col-12" action="/optins/process/" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="slug" value="python-tricks-wide">
+                                    <div class="form-group">
+                                        <input name="email" type="email" class="form-control form-control-lg"
+                                               placeholder="Email Address" required dir="ltr">
+                                    </div>
+                                    <button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">
+                                        برایم بفرست
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-5">
+                    <a href="{% url 'home:details' 2 'y' %}">
+                        <img class="card-img-top"
+                             src="https://files.realpython.com/media/python-basics-wide2.f73a9e9bf9b8.jpg"
+                             alt="Card image cap">
+                        <br/>
+                        <div class="card-body">
+                        <p><strong>من با پایتون و به طور کلی برنامه نویسی تازه کار هستم</strong><br> - چگونه می توانم اصول اولیه پایتون را یاد بگیرم؟</p>
+                        <a href="{% url 'home:details' 2 'j' %}" class="btn btn-primary btn-lg d-block">اصول پایتون را بیاموزید</a>
+                    </div>
+                    </a>
+                </div>
+
+
+                <div class="alert alert-warning" role="alert">
+                    <p>
+                        <a href="" class="alert-link" data-toggle="modal" data-target="#modal-newsletter" data-focus="false">
+                            برای پیوستن به خبرنامه ما اینجا را کلیک کنید
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="modal-newsletter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content" style="color: black">
+
+            <div class="modal-header bg-light pt-3 pb-2">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="progress" style="height: .5rem;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated w-75"
+                                     role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <p class="text-muted text-center mb-0 mt-2">این فرم را تکمیل کنید و روی دکمه زیر کلیک کنید</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body m-4">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-lg-4 mb-4">
+
+                            <img class="img-fluid rounded"
+                                 src="https://files.realpython.com/media/Real_Python_Newsletter_square.1e3e64f99300.jpg"
+                                 width="1000" height="1000" sizes="50vw" alt="The Real Python Newsletter">
+
+                        </div>
+                        <div class="col">
+                            <p class="text-center h3 mb-4">
+                                به خبرنامه انجمن ما بپیوندید<br><br>بیش از {{users}} برنامه نویس پایتون مشترک شده اند
+                            </p>
+
+                            <form class="col-12" action="/optins/process/" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="slug" value="newsletter">
+                                <input type="hidden" name="source_path" value="/start-here/">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Email Address"
+                                           required autofocus dir="ltr">
+                                </div>
+                                <button name="submit" type="submit" class="btn btn-primary btn-block text-wrap">
+                                    دریافت خبرنامه
+                                </button>
+                                <p class="mb-0 mt-2 text-muted"><small>🔒 بدون هرزنامه</small></p>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

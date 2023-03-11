@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+    <script>function sss(d){$(d).next().slideToggle()}</script>
+    <style>
+        pre{text-align: left;direction:ltr}
+        article.content-area {background-color: rgba(14,35,56) !important; padding:11px}
+    </style>
+    <div style="text-align:right">
+        <h1 class="fa-3x">{{ tut.title }}</h1>
+
+        <p>
+            <img src="{{ tut.imgurl }}" style="width: 100%;border-radius: 1.75rem" >
+        </p>
+        <small>{{ tut.created }}</small><br>
+        {% if request.user.is_superuser %}
+            <a href="{% url 'home:delete' tut.id %}" class="btn btn-warning"> حذف </a>
+            <a href="{% url 'home:update' tut.id %}" class="btn btn-info"> اصلاح </a>
+        {% endif %}
+        <hr>
+        <p>{{ tut.body|safe }}</p>
+        <p>امتیاز : {{ tut.score }}</p>
+        <h4>ارسال نظر</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="ارسال" class="btn btn-success col-md-2">
+        </form>
+        <hr>
+        <p>تاحالا  {{ tut.comments_count }} نفر نظر دادند</p>
+        {% for c in comments %}
+            <div class="card bg-dark">
+                <p class="card-header" style="color:gray">
+                    {{ c.user.first_name }} {{ c.user.last_name }} | {{ c.created |timesince }}
+                </p>
+                <p class="card-body">{{ c.body }}</p>
+                <p class="btn btn-info col-md-1" onclick="sss(this)" style="position:absolute;left:4px;top:4px">پاسخ</p>
+                <div class="mr-3 ml-3" style="display:none">
+                    <form action="{% url 'home:add_reply' tut.id c.id %}" method="post">
+                        {% csrf_token %}
+                        {{ reply_form.as_p }}
+                        <input type="submit" value=" ارسال " class="btn btn-success">
+                    </form><br>
+                </div>
+
+                {% with replies=c.rcomments.all %}
+                    {% for r in replies %}
+                        {% if r.approve %}
+                        <div class="bg-primary p-2 mb-2 mr-5 ml-2">
+                            {{ r.user }} <br> {{ r.body }}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
+            </div><br>
+        {% empty %}
+            <p></p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block b1 %}
+    <style>
+        pre{text-align: left;direction:ltr}
+        article.content-area {background-color: rgba(14,35,56) !important; padding:11px}
+    </style>
+    {{ res|safe }}
+    <hr>
+    <textarea name="" id="" cols="100" rows="20">
+        {{ res|safe }}
+    </textarea>
+{% endblock %}
